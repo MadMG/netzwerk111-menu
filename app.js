@@ -10,7 +10,7 @@ module.exports = {
       url: 'http://www.netzwerk111.at/restaurant-hartberg/mittagsmenu/'
     }, function (err, response, body) {
       if (err) {
-        return console.error(err);
+        return err;
       }
 
       $ = cheerio.load(body, {
@@ -47,9 +47,8 @@ module.exports = {
                 });
 
             var weekProperty = 'week' + date.format('W');
-            console.log(weekProperty + '... ' + date.format('YYYY-MM-DD') + ':  ' + menuItems);
-
             var day = {};
+
             day['date'] = date.format('YYYY-MM-DD');
             day['items'] = menuItems;
 
