@@ -1,6 +1,6 @@
 {
   "name": "netzwerk111-menu",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "netzwerk111.at lunch menu parser",
   "main": "app.js",
   "scripts": {
