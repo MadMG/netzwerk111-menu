@@ -3,7 +3,7 @@ A netzwerk111.at menu parser
 
 ## Usage
 ```javascript
-var menu = require('./app');
+var menu = require('netzwerk111-menu');
  
 menu.retrieve(function (err, data) {
  if (err) {
