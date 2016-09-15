@@ -1,0 +1,22 @@
+{
+  "name": "netzwerk111-menu",
+  "version": "1.0.0",
+  "description": "netzwerk111.at lunch menu parser",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "lunch",
+    "menu",
+    "parser",
+    "netzwerk111"
+  ],
+  "author": "Martin Groller <madmg82@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^0.22.0",
+    "moment": "^2.15.0",
+    "request": "^2.74.0"
+  }
+}
