@@ -18,7 +18,7 @@ module.exports = {
         xmlMode: true
       });
 
-      var result = {};
+      var result = [];
 
       $('.menu-category').each(function (i, category) {
         if (i > 0) {  // skip general menu
@@ -46,20 +46,11 @@ module.exports = {
                   return meal.trim();
                 });
 
-            var weekProperty = 'week' + date.format('W');
-            var day = {};
-
-            day['date'] = date.format('YYYY-MM-DD');
-            day['items'] = menuItems;
-
-            var week = result[weekProperty];
-            if (!week) {
-              week = [];
-            }
-
-            week.push(day);
-
-            result[weekProperty] = week;
+            result.push({
+              date: date.format('YYYY-MM-DD'),
+              items: menuItems,
+              week: date.format('W')
+            });
           });
         }
       });
