@@ -10,7 +10,8 @@ module.exports = {
       url: 'http://www.netzwerk111.at/restaurant-hartberg/mittagsmenu/'
     }, function (err, response, body) {
       if (err) {
-        return err;
+        callback(err);
+        return;
       }
 
       $ = cheerio.load(body, {
