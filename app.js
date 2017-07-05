@@ -21,8 +21,7 @@ module.exports = {
 
       var result = [];
 
-      $('.menu-category').each(function (i, category) {
-        if (i > 0) {  // skip general menu
+      $('.menu1').each(function (i, category) {
           var weekDescription;
 
           $(category).each(function (i, element) {
@@ -53,7 +52,6 @@ module.exports = {
               week: date.format('W')
             });
           });
-        }
       });
 
       callback(undefined, result);
