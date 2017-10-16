@@ -1,13 +1,10 @@
 {
   "name": "netzwerk111-menu",
-  "version": "1.1.1",
+  "version": "1.1.2",
   "description": "netzwerk111.at lunch menu parser",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "engines": {
-    "node": "6.11.1"
   },
   "keywords": [
     "lunch",
@@ -19,7 +16,7 @@
   "license": "MIT",
   "dependencies": {
     "cheerio": "^0.22.0",
-    "moment": "^2.15.0",
-    "request": "^2.74.0"
+    "moment": "^2.19.1",
+    "request": "^2.83.0"
   }
 }
