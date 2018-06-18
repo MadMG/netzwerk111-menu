@@ -1,7 +1,7 @@
-var cheerio = require('cheerio');
-var request = require('request');
-var moment = require('moment');
-var dateFormat = 'DD.MM.YYYY';
+const cheerio = require('cheerio');
+const request = require('request');
+const moment = require('moment');
+const dateFormat = 'DD.MM.YYYY';
 
 module.exports = {
   retrieve: function (callback) {
@@ -19,39 +19,39 @@ module.exports = {
         xmlMode: true
       });
 
-      var result = [];
+      let result = [];
 
       $('.menu1').each(function (i, category) {
-          var weekDescription;
+        let weekDescription;
 
-          $(category).each(function (i, element) {
-            weekDescription = $(element).text().trim();
+        $(category).each(function (i, element) {
+          weekDescription = $(element).text().trim();
+        });
+
+        $(category).parent().find('.menu-item').each(function (i, item) {
+          let date = moment($(item).find('.menu-title2').text(), dateFormat);
+          let menuItems = $(item).find('.menu-description2').text().split('Menü')
+              .filter(function (element, index) {
+                return index !== 0;
+              })
+              .map(function (meal) {
+                let idx = meal.indexOf('- oder -');
+
+                if (idx !== -1) {
+                  meal = meal.substring(4, idx);
+                } else {
+                  meal = meal.substring(4);
+                }
+
+                return meal.trim();
+              });
+
+          result.push({
+            date: date.format('YYYY-MM-DD'),
+            items: menuItems,
+            week: date.format('W')
           });
-
-          $(category).parent().find('.menu-item').each(function (i, item) {
-            var date = moment($(item).find('.menu-title2').text(), dateFormat);
-            var menuItems = $(item).find('.menu-description2').text().split('Menü')
-                .filter(function (element, index) {
-                  return index !== 0;
-                })
-                .map(function (meal) {
-                  var idx = meal.indexOf('- oder -');
-
-                  if (idx !== -1) {
-                    meal = meal.substring(4, idx);
-                  } else {
-                    meal = meal.substring(4);
-                  }
-
-                  return meal.trim();
-                });
-
-            result.push({
-              date: date.format('YYYY-MM-DD'),
-              items: menuItems,
-              week: date.format('W')
-            });
-          });
+        });
       });
 
       callback(undefined, result);
